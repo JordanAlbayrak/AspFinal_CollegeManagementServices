@@ -3,14 +3,16 @@ using College_Management_Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace College_Management_Services.Migrations
 {
     [DbContext(typeof(College_Management_ServicesContext))]
-    partial class College_Management_ServicesContextModelSnapshot : ModelSnapshot
+    [Migration("20211123190503_Create Staff Task Table")]
+    partial class CreateStaffTaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

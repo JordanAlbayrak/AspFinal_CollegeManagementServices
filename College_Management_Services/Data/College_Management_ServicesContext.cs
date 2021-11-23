@@ -15,5 +15,7 @@ namespace College_Management_Services.Data
         }
 
         public DbSet<College_Management_Services.Models.StudentDuty> StudentDuties { get; set; }
+
+        public DbSet<College_Management_Services.Models.StaffTask> StaffTask { get; set; }
     }
 }

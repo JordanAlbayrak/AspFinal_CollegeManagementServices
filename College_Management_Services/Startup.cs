@@ -30,6 +30,8 @@ namespace College_Management_Services
 
             services.AddDbContext<College_Management_ServicesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesContext")));
+            services.AddDbContext<College_Management_ServicesDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesDBContextConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +52,7 @@ namespace College_Management_Services
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -67,6 +70,7 @@ namespace College_Management_Services
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
