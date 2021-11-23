@@ -28,11 +28,8 @@ namespace College_Management_Services
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<StaffTaskDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("StaffTaskDbContext")));
-
-            services.AddDbContext<StudentDutyContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("StudentDutyContext")));
+            services.AddDbContext<College_Management_ServicesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,15 +50,23 @@ namespace College_Management_Services
 
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                    name: "staff",
+                    areaName: "Staff",
+                    pattern: "Staff/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "student",
+                    areaName: "Student",
+                    pattern: "Student/{controller=StudentDuties}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
             });
         }
     }

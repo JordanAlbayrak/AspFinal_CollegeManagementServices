@@ -11,6 +11,10 @@
     "mssql3": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:StudentDutyContext"
+    },
+    "mssql4": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:College_Management_ServicesContext"
     }
   }
 }
