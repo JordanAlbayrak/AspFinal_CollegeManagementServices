@@ -23,7 +23,7 @@ namespace College_Management_Services.Areas.Staff.Controllers
         // GET: Staff/StaffTasks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StaffTask.ToListAsync());
+            return View(await _context.StaffTasks.ToListAsync());
         }
 
         // GET: Staff/StaffTasks/Details/5
@@ -34,7 +34,7 @@ namespace College_Management_Services.Areas.Staff.Controllers
                 return NotFound();
             }
 
-            var staffTask = await _context.StaffTask
+            var staffTask = await _context.StaffTasks
                 .FirstOrDefaultAsync(m => m.TaskId == id);
             if (staffTask == null)
             {
@@ -74,7 +74,7 @@ namespace College_Management_Services.Areas.Staff.Controllers
                 return NotFound();
             }
 
-            var staffTask = await _context.StaffTask.FindAsync(id);
+            var staffTask = await _context.StaffTasks.FindAsync(id);
             if (staffTask == null)
             {
                 return NotFound();
@@ -125,7 +125,7 @@ namespace College_Management_Services.Areas.Staff.Controllers
                 return NotFound();
             }
 
-            var staffTask = await _context.StaffTask
+            var staffTask = await _context.StaffTasks
                 .FirstOrDefaultAsync(m => m.TaskId == id);
             if (staffTask == null)
             {
@@ -140,15 +140,15 @@ namespace College_Management_Services.Areas.Staff.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var staffTask = await _context.StaffTask.FindAsync(id);
-            _context.StaffTask.Remove(staffTask);
+            var staffTask = await _context.StaffTasks.FindAsync(id);
+            _context.StaffTasks.Remove(staffTask);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StaffTaskExists(int id)
         {
-            return _context.StaffTask.Any(e => e.TaskId == id);
+            return _context.StaffTasks.Any(e => e.TaskId == id);
         }
     }
 }

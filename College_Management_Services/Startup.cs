@@ -30,8 +30,6 @@ namespace College_Management_Services
 
             services.AddDbContext<College_Management_ServicesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesContext")));
-            services.AddDbContext<College_Management_ServicesDBContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesDBContextConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
