@@ -1,8 +1,25 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using College_Management_Services.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-area="Student" asp-controller="StudentDuties" asp-action="Index" class="btn">Students</a>
+        <a asp-area="Staff" asp-controller="StaffTasks" asp-action="Index" class="btn">Staff</a>
+    }
+    else
+    {
+        <a class="btn" id="register" asp-area="Identity" asp-page="/Account/Register">Students</a>
+        <a class="btn" id="register" asp-area="Identity" asp-page="/Account/Register">Staff</a>
+    }
 </div>

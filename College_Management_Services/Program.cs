@@ -24,6 +24,9 @@ namespace College_Management_Services
                 {
                     var context = services.GetRequiredService<College_Management_ServicesContext>(); //Get services from DB context and bind it to DB through migration
                     context.Database.Migrate(); // execute the migration code to create appropriate tables and columns according to context.
+
+                    var contextIdentity = services.GetRequiredService<LoginRegisterContext>(); //Get services from DB context and bind it to DB through migration
+                    contextIdentity.Database.Migrate(); // execute the migration code to create appropriate tables and columns according to context.
                 }
                 catch (Exception ex)
                 {
