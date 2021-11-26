@@ -16,17 +16,12 @@ namespace College_Management_Services.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AuthDBContext>(options =>
+                services.AddDbContext<LoginRegisterContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthDBContextConnection")));
+                        context.Configuration.GetConnectionString("LoginRegisterContextConnection")));
 
-
-                services.AddDefaultIdentity<ApplicationUser>(options => {
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireUppercase = false;
-                })
-                    .AddEntityFrameworkStores<AuthDBContext>();
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddEntityFrameworkStores<LoginRegisterContext>();
             });
         }
     }

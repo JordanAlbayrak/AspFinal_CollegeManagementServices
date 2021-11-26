@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace College_Management_Services.Data
 {
-    public class AuthDBContext : IdentityDbContext<ApplicationUser>
+    public class LoginRegisterContext : IdentityDbContext<ApplicationUser>
     {
-        public AuthDBContext(DbContextOptions<AuthDBContext> options)
+        public LoginRegisterContext(DbContextOptions<LoginRegisterContext> options)
             : base(options)
         {
         }

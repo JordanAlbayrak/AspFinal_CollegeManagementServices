@@ -6,11 +6,11 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Linq;
 using System.Threading.Tasks;
-using College_Management_Services.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using College_Management_Services.Areas.Identity.Data;
 
 namespace College_Management_Services.Areas.Identity.Pages.Account.Manage
 {

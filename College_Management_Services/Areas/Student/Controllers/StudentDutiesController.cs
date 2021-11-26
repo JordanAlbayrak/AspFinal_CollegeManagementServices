@@ -11,22 +11,22 @@ using College_Management_Services.Models;
 namespace College_Management_Services.Areas.Student.Controllers
 {
     [Area("Student")]
-    public class StudentDutyController : Controller
+    public class StudentDutiesController : Controller
     {
-        private readonly StudentDutyContext _context;
+        private readonly College_Management_ServicesContext _context;
 
-        public StudentDutyController(StudentDutyContext context)
+        public StudentDutiesController(College_Management_ServicesContext context)
         {
             _context = context;
         }
 
-        // GET: Student/StudentDuty
+        // GET: Student/StudentDuties
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StudentDuty.ToListAsync());
+            return View(await _context.StudentDuties.ToListAsync());
         }
 
-        // GET: Student/StudentDuty/Details/5
+        // GET: Student/StudentDuties/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,7 +34,7 @@ namespace College_Management_Services.Areas.Student.Controllers
                 return NotFound();
             }
 
-            var studentDuty = await _context.StudentDuty
+            var studentDuty = await _context.StudentDuties
                 .FirstOrDefaultAsync(m => m.DutyId == id);
             if (studentDuty == null)
             {
@@ -44,13 +44,13 @@ namespace College_Management_Services.Areas.Student.Controllers
             return View(studentDuty);
         }
 
-        // GET: Student/StudentDuty/Create
+        // GET: Student/StudentDuties/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Student/StudentDuty/Create
+        // POST: Student/StudentDuties/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +66,7 @@ namespace College_Management_Services.Areas.Student.Controllers
             return View(studentDuty);
         }
 
-        // GET: Student/StudentDuty/Edit/5
+        // GET: Student/StudentDuties/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,7 +74,7 @@ namespace College_Management_Services.Areas.Student.Controllers
                 return NotFound();
             }
 
-            var studentDuty = await _context.StudentDuty.FindAsync(id);
+            var studentDuty = await _context.StudentDuties.FindAsync(id);
             if (studentDuty == null)
             {
                 return NotFound();
@@ -82,7 +82,7 @@ namespace College_Management_Services.Areas.Student.Controllers
             return View(studentDuty);
         }
 
-        // POST: Student/StudentDuty/Edit/5
+        // POST: Student/StudentDuties/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -117,7 +117,7 @@ namespace College_Management_Services.Areas.Student.Controllers
             return View(studentDuty);
         }
 
-        // GET: Student/StudentDuty/Delete/5
+        // GET: Student/StudentDuties/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,7 +125,7 @@ namespace College_Management_Services.Areas.Student.Controllers
                 return NotFound();
             }
 
-            var studentDuty = await _context.StudentDuty
+            var studentDuty = await _context.StudentDuties
                 .FirstOrDefaultAsync(m => m.DutyId == id);
             if (studentDuty == null)
             {
@@ -135,20 +135,20 @@ namespace College_Management_Services.Areas.Student.Controllers
             return View(studentDuty);
         }
 
-        // POST: Student/StudentDuty/Delete/5
+        // POST: Student/StudentDuties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var studentDuty = await _context.StudentDuty.FindAsync(id);
-            _context.StudentDuty.Remove(studentDuty);
+            var studentDuty = await _context.StudentDuties.FindAsync(id);
+            _context.StudentDuties.Remove(studentDuty);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StudentDutyExists(int id)
         {
-            return _context.StudentDuty.Any(e => e.DutyId == id);
+            return _context.StudentDuties.Any(e => e.DutyId == id);
         }
     }
 }
