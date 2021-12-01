@@ -15,5 +15,7 @@ namespace College_Management_Services.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string lastName { get; set; }
+        [ForeignKey("AspNetRoles")]
+        public string Name { get; set; }
     }
 }

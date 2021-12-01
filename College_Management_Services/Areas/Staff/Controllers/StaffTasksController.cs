@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using College_Management_Services.Data;
 using College_Management_Services.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace College_Management_Services.Areas.Staff.Controllers
 {
     [Area("Staff")]
+    [Authorize(Roles = "Staff")]
     public class StaffTasksController : Controller
     {
         private readonly College_Management_ServicesContext _context;

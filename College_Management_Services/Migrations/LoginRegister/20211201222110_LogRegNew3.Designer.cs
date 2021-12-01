@@ -4,14 +4,16 @@ using College_Management_Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace College_Management_Services.Migrations.LoginRegister
 {
     [DbContext(typeof(LoginRegisterContext))]
-    partial class LoginRegisterContextModelSnapshot : ModelSnapshot
+    [Migration("20211201222110_LogRegNew3")]
+    partial class LogRegNew3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
