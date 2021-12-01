@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using College_Management_Services.Data;
+using Microsoft.AspNetCore.Identity;
+using College_Management_Services.Areas.Identity.Data;
 
 namespace College_Management_Services
 {
@@ -25,11 +27,14 @@ namespace College_Management_Services
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-
             services.AddDbContext<College_Management_ServicesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("College_Management_ServicesContext")));
+            services.AddDefaultIdentity<ApplicationUser>(
+               options => options.SignIn.RequireConfirmedAccount = false)
+                 .AddRoles<IdentityRole>()
+                 .AddEntityFrameworkStores<LoginRegisterContext>();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
