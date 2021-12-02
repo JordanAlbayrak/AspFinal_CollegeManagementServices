@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Input.Name"></label>
-                <select form="Input.Name" class="form-control" asp-items='new SelectList(roles, "Id", "Name")'></select>
+                <select asp-for="Input.Name" class="form-control" asp-items='new SelectList(roles, "Id", "Name")' ></select>
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>

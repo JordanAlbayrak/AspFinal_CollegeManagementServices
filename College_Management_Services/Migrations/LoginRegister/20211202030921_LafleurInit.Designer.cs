@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace College_Management_Services.Migrations.LoginRegister
 {
     [DbContext(typeof(LoginRegisterContext))]
-    [Migration("20211201205413_LogReg")]
-    partial class LogReg
+    [Migration("20211202030921_LafleurInit")]
+    partial class LafleurInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

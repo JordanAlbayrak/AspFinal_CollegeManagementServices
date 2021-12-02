@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace College_Management_Services.Migrations.LoginRegister
 {
-    public partial class LoginRegisterInit : Migration
+    public partial class LafleurInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
