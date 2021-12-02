@@ -20,8 +20,8 @@ namespace College_Management_Services.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("LoginRegisterContextConnection")));
 
-                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                    .AddEntityFrameworkStores<LoginRegisterContext>();
+                //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                //    .AddEntityFrameworkStores<LoginRegisterContext>();
             });
         }
     }
