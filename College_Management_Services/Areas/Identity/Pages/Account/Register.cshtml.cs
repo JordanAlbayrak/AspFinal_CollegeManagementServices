@@ -72,7 +72,7 @@ namespace College_Management_Services.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public async Task OnGet(string returnUrl = null)
+        public void OnGet(string returnUrl = null)
         {
             ViewData["roles"] = _roleManager.Roles.ToList();
             ReturnUrl = returnUrl;
@@ -82,6 +82,9 @@ namespace College_Management_Services.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            var role = _roleManager.FindByIdAsync(Input.Name).Result;
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, firstName = Input.firstName, lastName = Input.lastName, Name = Input.Name };
@@ -90,6 +93,8 @@ namespace College_Management_Services.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, role.Name);
 
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -111,6 +116,7 @@ namespace College_Management_Services.Areas.Identity.Pages.Account
                     //    await _signInManager.SignInAsync(user, isPersistent: false);
                     //    return LocalRedirect(returnUrl);
                     //}
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
