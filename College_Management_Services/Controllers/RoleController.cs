@@ -29,5 +29,7 @@ namespace College_Management_Services.Controllers
             await _roleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
+
+        
     }
 }
