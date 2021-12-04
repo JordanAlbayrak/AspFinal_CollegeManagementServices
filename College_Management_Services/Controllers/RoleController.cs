@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace College_Management_Services.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
