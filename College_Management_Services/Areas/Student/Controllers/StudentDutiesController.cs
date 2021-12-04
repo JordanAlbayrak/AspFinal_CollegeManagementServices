@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace College_Management_Services.Areas.Student.Controllers
 {
     [Area("Student")]
-    [Authorize(Roles = "Student")]
+    [Authorize(Roles = "Student,Admin")]
     public class StudentDutiesController : Controller
     {
         private readonly College_Management_ServicesContext _context;
