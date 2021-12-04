@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace College_Management_Services.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
