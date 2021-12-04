@@ -5,7 +5,15 @@
 }
 
 <h1> List of Roles</h1>
-<a asp-action="Create">Create</a>
+@if (Model.ToList().Count != 3)
+{
+    <a asp-action="Create">Create</a>
+}
+else
+{
+    <a href="#" class="btn disabled"><i>Maximum role limit reached</i></a>
+}
+
 <table class="table table-striped table-bordered">
     <thread>
         <tr>
