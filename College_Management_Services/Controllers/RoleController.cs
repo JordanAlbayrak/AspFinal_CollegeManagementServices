@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace College_Management_Services.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -14,12 +15,12 @@ namespace College_Management_Services.Controllers
         {
             _roleManager = roleManager;
         }
+        
         public IActionResult Index()
         {
-            var roles = _roleManager.Roles.ToList();
+            var roles = _roleManager.Roles.ToList().Where(r=>r.Name != "Admin");
             return View(roles);
         }
-
         public IActionResult Create()
         {
             return View(new IdentityRole());

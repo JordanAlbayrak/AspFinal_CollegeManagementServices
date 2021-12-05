@@ -80,12 +80,12 @@ namespace College_Management_Services.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             var role = _roleManager.FindByIdAsync(Input.Name).Result;
-
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && role.Name != "Admin")
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, firstName = Input.firstName, lastName = Input.lastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
